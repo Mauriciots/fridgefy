@@ -1,5 +1,13 @@
+import React from 'react';
+import { AppContext } from '../context/appContext';
+import Recipes from './Recipes';
+
 function App() {
-  return <h2>Fridgefy</h2>;
+  return (
+    <AppContext>
+      <Recipes />
+    </AppContext>
+  );
 }
 
 export default App;
