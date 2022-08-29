@@ -2,9 +2,7 @@ import React from 'react';
 import { useAppContext } from '../context/appContext';
 
 const Recipes = () => {
-    const { state } = useAppContext();
-
-    return <p>Recipes - {state.anything}</p>
+    return <p>Recipes</p>
 }
 
 export default Recipes;
