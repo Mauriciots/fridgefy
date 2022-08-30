@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import { authenticate } from '../../services/authService';
+import { authenticate } from '../services/authService';
 import { useAppContext } from '../context/appContext';
 
 const Header = () => {
