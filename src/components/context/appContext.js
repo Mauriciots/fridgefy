@@ -1,11 +1,16 @@
 import React, { useContext, useReducer } from 'react';
 
-const reducer = (state, action) => {
-    switch (action.type) {
-        case 'anything':
+const reducer = (state, { type, payload }) => {
+    switch (type) {
+        case 'login':
             return {
                 ...state,
-                anything: 'something',
+                user: payload.user,
+            }
+        case 'logout':
+            return {
+                ...state,
+                user: undefined,
             }
         default:
             throw new Error('App Context Reduce: unknown action');
@@ -15,7 +20,7 @@ const reducer = (state, action) => {
 const Context = React.createContext({});
 
 export const AppContext = ({ children }) => {
-    const [state, dispatch] = useReducer(reducer, { anything: 'Anything' });
+    const [state, dispatch] = useReducer(reducer, { user: undefined });
     return (
         <Context.Provider value={{ state, dispatch }}>
             {children}
