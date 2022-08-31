@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { authenticate } from '../services/authService';
 import { useAppContext } from '../context/appContext';
@@ -22,8 +23,8 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#recipes">Recipes</Nav.Link>
-                        <Nav.Link href="#shopping-list">My shopping list</Nav.Link>
+                        <Link to="/recipes">Recipes</Link>
+                        <Link to="/shopping-list">My shopping list</Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Navbar.Collapse className="justify-content-end">
