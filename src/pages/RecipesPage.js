@@ -2,8 +2,18 @@ import Recipes from '../components/Recipes';
 
 const RecipesPage = () => {
     return (
-        <div>
-            <Recipes />
+        <div className="container">
+            <div className="row">
+                <div className="col-12 col-lg-2">
+                    <p>My Fridge</p>
+                </div>
+                <div className="col-12 col-lg-8">
+                    <Recipes />
+                </div>
+                <div className="col-12 col-lg-2">
+                    <p>My Recipes</p>
+                </div>
+            </div>
         </div>
     );
 }
