@@ -12,6 +12,16 @@ const reducer = (state, { type, payload }) => {
                 ...state,
                 user: undefined,
             }
+        case 'addRecipe':
+            return {
+                ...state,
+                recipes: [...state.recipes, payload.newRecipe],
+            }
+        case 'removeRecipe':
+            return {
+                ...state,
+                recipes: state.recipes.filter(r => r.id !== payload.recipeId),
+            }
         default:
             throw new Error('App Context Reduce: unknown action');
     }
@@ -20,7 +30,10 @@ const reducer = (state, { type, payload }) => {
 const Context = React.createContext({});
 
 export const AppContext = ({ children }) => {
-    const [state, dispatch] = useReducer(reducer, { user: undefined });
+    const [state, dispatch] = useReducer(reducer, {
+        user: undefined,
+        recipes: [],
+    });
     return (
         <Context.Provider value={{ state, dispatch }}>
             {children}
