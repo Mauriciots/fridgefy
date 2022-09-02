@@ -22,6 +22,11 @@ const reducer = (state, { type, payload }) => {
                 ...state,
                 recipes: state.recipes.filter(r => r.id !== payload.recipeId),
             }
+        case 'loadSavedRecipes':
+            return {
+                ...state,
+                recipes: payload.docs,
+            }
         default:
             throw new Error('App Context Reduce: unknown action');
     }

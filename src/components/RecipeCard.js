@@ -8,11 +8,13 @@ const RecipeCard = ({ recipe }) => {
     const { state, dispatch } = useAppContext();
 
     const bookmarkRecipe = (recipe) => {
-        const payload = {
-            newRecipe: recipe,
-        };
-        dispatch({ type: 'addRecipe', payload });
-        addRecipe(recipe, state.user.uid);
+        addRecipe(recipe, state.user.uid).then(docId => {
+            const newRecipe = {
+                ...recipe,
+                docId,
+            };
+            dispatch({ type: 'addRecipe', payload: { newRecipe } });
+        });
     }
 
     const isDisabled = (recipeId) => {
