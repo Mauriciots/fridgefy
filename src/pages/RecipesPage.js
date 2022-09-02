@@ -1,3 +1,4 @@
+import MyRecipes from '../components/MyRecipes';
 import Recipes from '../components/Recipes';
 
 const RecipesPage = () => {
@@ -11,7 +12,7 @@ const RecipesPage = () => {
                     <Recipes />
                 </div>
                 <div className="col-12 col-lg-2">
-                    <p>My Recipes</p>
+                    <MyRecipes />
                 </div>
             </div>
         </div>
