@@ -26,6 +26,8 @@ export const getRecipes = (query, diet, cuisine, intolerances) => {
         cuisine,
         diet,
         intolerances,
+        addRecipeInformation: true,
+        fillIngredients: true,
     }
     return axios.get(`${BASE_ENDPOINT}/recipes/complexSearch`, { params })
 }

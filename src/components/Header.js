@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { authenticate } from '../services/authService';
 import { useAppContext } from '../context/appContext';
+import Button from 'react-bootstrap/Button';
 
 const Header = () => {
     const { state, dispatch } = useAppContext();
@@ -23,8 +24,8 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Link to="/recipes">Recipes</Link>
-                        <Link to="/shopping-list">My shopping list</Link>
+                        <Link to="/recipes" className="nav-link" role="button">Recipes</Link>
+                        <Link to="/shopping-list" className="nav-link" role="button">My shopping list</Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Navbar.Collapse className="justify-content-end">
@@ -33,9 +34,9 @@ const Header = () => {
                             ? (
                                 <>
                                     Signed in as: {state.user.displayName}
-                                    <button onClick={handleLogoutClick}>Logout</button>
+                                    <Button variant="link" onClick={handleLogoutClick}>Logout</Button>
                                 </>
-                            ) : (<button onClick={handleLoginClick}>Login</button>)
+                            ) : (<Button variant="success" onClick={handleLoginClick}>Login</Button>)
                         }
                     </Navbar.Text>
                 </Navbar.Collapse>

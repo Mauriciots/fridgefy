@@ -15,7 +15,7 @@ const RecipesPage = () => {
     }, []);
 
     return (
-        <div className="container">
+        <div className="container mt-3">
             <div className="row">
                 <div className="col-12 col-lg-2">
                     <p>My Fridge</p>
