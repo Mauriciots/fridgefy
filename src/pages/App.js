@@ -7,6 +7,7 @@ import RecipesPage from './RecipesPage';
 import ShoppingListPage from './ShoppingListPage';
 import LandingPage from './LandingPage';
 import ProtectedRoute from '../components/ProtectedRoute'
+import MyFridge from '../components/MyFridge'
 
 function App() {
   return (
@@ -38,11 +39,11 @@ function App() {
               />
             </Routes>
           </BrowserRouter>
-          {/* <Search />
+          {/* {/* {/* <Search />
           <Filter />  
           <Recipes />
-          <MyRecipes />
-          <MyFridge /> */}
+          <MyRecipes /> */}
+           <MyFridge /> 
         </AppContext>
       </div>
     </div>
