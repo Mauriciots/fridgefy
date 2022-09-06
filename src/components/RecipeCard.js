@@ -4,7 +4,7 @@ import { useAppContext } from '../context/appContext';
 import { truncateRecipeTitle } from '../shared/utils'; 
 import { addRecipe } from '../services/recipeService'
 
-const RecipeCard = ({ recipe }) => {
+const RecipeCard = ({ recipe, landingPage }) => {
     const { state, dispatch } = useAppContext();
 
     const bookmarkRecipe = (recipe) => {
@@ -28,7 +28,7 @@ const RecipeCard = ({ recipe }) => {
                 <Card.Body>
                     <Card.Title style={{ height: '3rem' }}>{truncateRecipeTitle(recipe.title)}</Card.Title>
                     <Card.Text className="d-flex justify-content-end">
-                        {!isDisabled(recipe.id) && (
+                        {!isDisabled(recipe.id) && !landingPage && (
                             <FaBookmark
                                 style={{ cursor: 'pointer' }}
                                 className="text-success"

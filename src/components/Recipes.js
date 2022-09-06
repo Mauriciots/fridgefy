@@ -3,7 +3,7 @@ import { getRecipes } from '../services/recipeService';
 import RecipeCard from './RecipeCard';
 import Button from 'react-bootstrap/Button';
 
-const Recipes = () => {
+const Recipes = ({ landingPage = false }) => {
     const [data, setData] = useState([]);
     const [formData, setFormData] = useState({
         query: '',
@@ -54,6 +54,7 @@ const Recipes = () => {
                     >
                         <option value="">Select a cuisine</option>
                         <option value="Greek">Greek</option>
+                        <option value="American">American</option>
                     </select>
                     <select
                         name="diet"
@@ -63,6 +64,8 @@ const Recipes = () => {
                     >
                         <option value="">Select a diet</option>
                         <option value="Gluten Free">Gluten Free</option>
+                        <option value="Vegetarian">Vegetarian</option>
+                        <option value="Vegan">Vegan</option>
                     </select>
                     <select
                         name="intolerances"
@@ -72,6 +75,8 @@ const Recipes = () => {
                     >
                         <option value="">Select an intolerance</option>
                         <option value="Dairy">Dairy</option>
+                        <option value="Wheat">Wheat</option>
+                        <option value="Egg">Egg</option>
                     </select>
                 </div>
                 <div className="my-3 d-flex justify-content-end">
@@ -80,7 +85,7 @@ const Recipes = () => {
             </form>
             <div className="d-flex flex-wrap">
                 {data.map(row => (
-                    <RecipeCard recipe={row} />
+                    <RecipeCard recipe={row} landingPage={landingPage} />
                 ))}
             </div>
         </div>

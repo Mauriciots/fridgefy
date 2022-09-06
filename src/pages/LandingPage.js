@@ -1,6 +1,10 @@
+import Recipes from '../components/Recipes';
+
 const LandingPage = () => {
     return (
-        <h2>Landing Page</h2>
+        <div className="container">
+            <Recipes landingPage />
+        </div>
     )
 }
 
