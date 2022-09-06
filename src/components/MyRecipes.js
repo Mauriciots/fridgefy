@@ -2,15 +2,17 @@ import React from 'react';
 import { FaTrash } from 'react-icons/fa';
 import { useAppContext } from '../context/appContext';
 import { truncateRecipeTitle } from '../shared/utils';
+import { deleteRecipe, getSavedRecipes } from '../services/recipeService'
 
 const MyRecipes = () => {
     const { state, dispatch } = useAppContext();
 
     const removeRecipe = (recipeId) => {
-        const payload = { recipeId };
-        dispatch({
-            type: 'removeRecipe',
-            payload,
+        deleteRecipe(recipeId).then(() => {
+            getSavedRecipes(state.user.uid).then((docs) => dispatch({ 
+                type: 'loadSavedRecipes',
+                payload: { docs },
+            }));
         });
     }
 
@@ -20,7 +22,7 @@ const MyRecipes = () => {
             <ul className="list-unstyled">
                 {state.recipes.map((r) => (
                     <li key={r.id} style={{ fontSize: '0.8rem' }} className="mb-2">
-                        <FaTrash className="me-2 text-danger" onClick={() => removeRecipe(r.id)} /> {truncateRecipeTitle(r.title)}
+                        <FaTrash className="me-2 text-danger" onClick={() => removeRecipe(r.docId)} /> {truncateRecipeTitle(r.title)}
                     </li>
                 ))}
             </ul>

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Card } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
 import { getRecipes } from '../services/recipeService';
 import RecipeCard from './RecipeCard';
+import Button from 'react-bootstrap/Button';
 
 const Recipes = () => {
     const [data, setData] = useState([]);
@@ -13,10 +13,23 @@ const Recipes = () => {
 
     });
 
+    const search = () => {
+        getRecipes(
+            formData.query,
+            formData.diet,
+            formData.cuisine,
+            formData.intolerances).then(result => setData(result.data.results)
+        );
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        getRecipes(formData.query, formData.diet, formData.cuisine, formData.intolerances).then(result => setData(result.data.results));
+        search();
     }
+
+    useEffect(() => {
+        search();
+    }, [])
 
     return (
         <div>
@@ -61,8 +74,8 @@ const Recipes = () => {
                         <option value="Dairy">Dairy</option>
                     </select>
                 </div>
-                <div className="mt-3 d-flex justify-content-end">
-                    <input type="submit" value="Search" />
+                <div className="my-3 d-flex justify-content-end">
+                    <Button variant="primary" type="submit">Search</Button>
                 </div>
             </form>
             <div className="d-flex flex-wrap">
